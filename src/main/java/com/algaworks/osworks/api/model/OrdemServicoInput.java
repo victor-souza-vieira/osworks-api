@@ -6,36 +6,24 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class OrdemServicoInput {
 
 	@NotBlank
+	@Getter
+	@Setter
 	private String descricao;
 	
 	@NotNull
+	@Getter
+	@Setter
 	private BigDecimal preco;
 	
 	@Valid
 	@NotNull
+	@Getter
+	@Setter
 	private ClienteIdInput cliente;
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	public BigDecimal getPreco() {
-		return preco;
-	}
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
-	}
-	public ClienteIdInput getCliente() {
-		return cliente;
-	}
-	public void setCliente(ClienteIdInput cliente) {
-		this.cliente = cliente;
-	}
-	
-	
-	
 }

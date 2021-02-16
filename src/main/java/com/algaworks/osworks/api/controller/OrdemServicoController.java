@@ -75,5 +75,4 @@ public class OrdemServicoController {
 	private OrdemServico toEntity(OrdemServicoInput ordemServicoInput) {
 		return modelMapper.map(ordemServicoInput, OrdemServico.class);
 	}
-	
 }
