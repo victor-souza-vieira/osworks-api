@@ -27,7 +27,7 @@ public class Comentario {
 	@Getter
 	@Setter
 	@ManyToOne
-	private OrdemServico comentario;
+	private OrdemServico ordemServico;
 	@Getter
 	@Setter
 	private String descricao;
