@@ -48,13 +48,12 @@ public class GestaoOrdemServicoService {
 	
 	public void finalizar(Long ordemServicoId) {
 		OrdemServico ordemServico = buscar(ordemServicoId);
-		ordemServico.setStatus(StatusOrdemServico.FINALIZADA);
-		ordemServico.setDataFinalizacao(OffsetDateTime.now());
+		ordemServico.finalizar();
 		ordemServicoRepository.save(ordemServico);
 	}
 
 	private OrdemServico buscar(Long ordemServicoId) {
 		return ordemServicoRepository.findById(ordemServicoId)
 				.orElseThrow(() -> new EntidadeNaoEncontradaException("Ordem de serviço não encontrada"));
-	}
+	}	
 }

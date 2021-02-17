@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.algaworks.osworks.api.model.Comentario;
+import com.algaworks.osworks.domain.exception.NegocioException;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -60,4 +61,21 @@ public class OrdemServico {
 	@Getter
 	@Setter
 	private List<Comentario> comentarios = new ArrayList<>();
+
+	public void finalizar() {
+		if(naoPodeSerFinalizada()) {
+			throw new NegocioException("Ordem de serviço não pode ser finalizada!");
+		}
+		setStatus(StatusOrdemServico.FINALIZADA);
+		setDataFinalizacao(OffsetDateTime.now());
+	}
+
+	public boolean naoPodeSerFinalizada() {
+		return !podeSerFinalizada();
+	}
+
+	public boolean podeSerFinalizada() {
+		return StatusOrdemServico.ABERTA.equals(getStatus());
+	}
+	
 }
